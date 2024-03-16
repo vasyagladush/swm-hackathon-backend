@@ -1,6 +1,7 @@
 from models.Marker import Marker
+from models.Category import Category
 
-async def retrieve_markers(category) -> list[Marker]:
+async def retrieve_markers(category: Category) -> list[Marker]:
     '''
     This function retrieves the markers from the database
     
@@ -16,8 +17,10 @@ async def retrieve_markers(category) -> list[Marker]:
             category: str
         }
     '''
-    markers = await Marker.all().to_list()
-    return markers
+    if not category:
+        markers = await Marker.all().to_list()
+        return markers
+    return Marker.all().filter(category=category).to_list()
 
 async def add_marker(new_marker: Marker) -> Marker:
     marker = await new_marker.create()
