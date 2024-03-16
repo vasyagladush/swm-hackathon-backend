@@ -10,13 +10,15 @@ class UserSignIn(HTTPBasicCredentials):
 
 
 class UserData(BaseModel):
-    fullname: str
+    firstname: str
+    lastname: str
     username: str
 
     class Config:
         json_schema_extra = {
             "example": {
-                "fullname": "Abdulazeez Abdulazeez Adeshina",
+                "firstname": "Abdulazeez",
+                "lastname": "Adeshina",
                 "username": "abdul.youngest.dev",
             }
         }
