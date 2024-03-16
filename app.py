@@ -3,6 +3,7 @@ from fastapi import FastAPI, Depends
 # from auth.jwt_bearer import JWTBearer
 from config.config import init_database
 from routes.user import router as UserRouter
+from routes.category import router as CategoryRouter
 # from routes.student import router as StudentRouter
 
 app = FastAPI()
@@ -21,4 +22,7 @@ async def read_root():
 
 
 app.include_router(UserRouter, tags=["User"], prefix="/users")
+app.include_router(CategoryRouter, tags=["Category"], prefix="/categories")
+
+
 # app.include_router(StudentRouter,tags=["Students"],prefix="/student",dependencies=[Depends(token_listener)],)
