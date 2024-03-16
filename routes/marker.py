@@ -8,7 +8,7 @@ from schemas.student import Response
 
 router = APIRouter()
 
-@router.get("/markers", response_description="Markers retrieved", response_model=Response)
+@router.get("/", response_description="Markers retrieved", response_model=Response)
 async def get_markers(categories: Annotated[list[str] | None, Query()] = None):
     markers = await retrieve_markers(categories)
     return {

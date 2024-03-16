@@ -4,6 +4,7 @@ from fastapi import FastAPI, Depends
 from config.config import init_database
 from routes.user import router as UserRouter
 from routes.category import router as CategoryRouter
+from routes.marker import router as MarkerRouter
 # from routes.student import router as StudentRouter
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -37,6 +38,7 @@ async def read_root():
 
 app.include_router(UserRouter, tags=["User"], prefix="/users")
 app.include_router(CategoryRouter, tags=["Category"], prefix="/categories")
+app.include_router(MarkerRouter, tags=["Marker"], prefix="/markers")
 
 
 # app.include_router(StudentRouter,tags=["Students"],prefix="/student",dependencies=[Depends(token_listener)],)

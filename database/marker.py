@@ -1,3 +1,4 @@
+from bson import ObjectId
 from models.Marker import Marker
 from models.Category import Category
 
@@ -18,11 +19,13 @@ async def retrieve_markers(category_ids: list[str] | None) -> list[Marker]:
             category: str
         }
     '''
+    
     if not category_ids:
         markers = await Marker.all().to_list()
         return markers
     
-    return await Marker.find({"category": {"$in": category_ids}}).to_list()
+    # return await Marker.find({"category": {"$in": list(map(ObjectId, category_ids))}}).to_list()
+    return await Marker.find({"category": ObjectId('65f5b153495352a2cce8c096')}).to_list()
 
 
 async def add_marker(new_marker: Marker) -> Marker:
