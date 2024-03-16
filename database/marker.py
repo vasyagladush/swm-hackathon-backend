@@ -1,4 +1,4 @@
-from bson import ObjectId
+from beanie import PydanticObjectId
 from models.Marker import Marker
 from models.Category import Category
 
@@ -19,13 +19,21 @@ async def retrieve_markers(category_ids: list[str] | None) -> list[Marker]:
             category: str
         }
     '''
-    
+
     if not category_ids:
         markers = await Marker.all().to_list()
         return markers
-    
+
+    all_markers = await Marker.all().to_list()
+    markers = []
+
+    for marker in all_markers:
+        if str(dict(dict(marker)['category'])['id']) in category_ids:
+            markers.append(marker)
+
+    return markers
     # return await Marker.find({"category": {"$in": list(map(ObjectId, category_ids))}}).to_list()
-    return await Marker.find({"category": ObjectId('65f5b153495352a2cce8c096')}).to_list()
+    # TODO: make it query DB approperiately and filter by category's id
 
 
 async def add_marker(new_marker: Marker) -> Marker:
