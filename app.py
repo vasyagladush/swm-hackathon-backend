@@ -6,7 +6,21 @@ from routes.user import router as UserRouter
 from routes.category import router as CategoryRouter
 # from routes.student import router as StudentRouter
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origin="*",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # token_listener = JWTBearer()
 
