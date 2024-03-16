@@ -22,4 +22,4 @@ async def add_category(new_category: Category) -> Category:
     return category
 
 async def find_category_by_name(name: str):
-    return await Category.find_one(Category.name == name)
+    return await Category.find_one({"name": name})
