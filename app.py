@@ -40,5 +40,3 @@ app.include_router(UserRouter, tags=["User"], prefix="/users")
 app.include_router(CategoryRouter, tags=["Category"], prefix="/categories")
 app.include_router(MarkerRouter, tags=["Marker"], prefix="/markers")
 
-
-# app.include_router(StudentRouter,tags=["Students"],prefix="/student",dependencies=[Depends(token_listener)],)
