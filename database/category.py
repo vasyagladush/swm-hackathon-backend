@@ -20,3 +20,6 @@ async def retrieve_categories() -> list[Category]:
 async def add_category(new_category: Category) -> Category:
     category = await new_category.create()
     return category
+
+async def find_category_by_name(name: str):
+    return await Category.find_one(Category.name == name)

@@ -10,7 +10,7 @@ class Marker(Document):
     category: Category
     lat: str
     lng: str
-    comments: list[dict['user': User, "comment": str, "date": str]]
+    # comments: list[dict['user': User, "comment": str, "date": str]]
     dumbBells: float  # 0-5
 
     class Settings:
